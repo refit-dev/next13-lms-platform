@@ -79,7 +79,7 @@ export async function POST(
     const session = await stripe.checkout.sessions.create({
       line_items,
       mode: 'payment',
-      payment_method_types: ['card'],
+      allowed_payment_method_types: ['card'],
       customer: stripeCustomer.stripeCustomerId,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?canceled=1`,
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?success=1`,
